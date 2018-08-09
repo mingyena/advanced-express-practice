@@ -4,9 +4,10 @@ let products = require("./products");
 let vehicles = require("./vehicles");
 let contacts = require("./contacts");
 let bodyParser = require("body-parser");
-
+let theParser = bodyParser.json();
 const app = express();
 
+app.use(theParser);
 //tell the sever to GET the file
 //find the static page in PUBLIC FOLDER
 //app.use(express.static('public'));
@@ -26,17 +27,27 @@ app.get("/contacts",function(request,response){
 
 //////////////////////:id
 app.get("/comment/:id",function(request,response){
-  return response.send(comments[request.params.id]);
+  return response.send(comments[request.params.id-1]);
 });
 app.get("/product/:id",function(request,response){
-  return response.send(products[request.params.id]);
+  return response.send(products[request.params.id-1]);
 });
 app.get("/vehicle/:id",function(request,response){
-  return response.send(vehicles[request.params.id]);
+  return response.send(vehicles[request.params.id-1]);
 });
 app.get("/contact/:id",function(request,response){
-  return response.send(contacts[request.params.id]);
+  return response.send(contacts[request.params.id-1]);
 });
+
+////////////////////Post
+app.post("/comments",function(request,response){
+   let newcomment = {};
+   newcomment = request.body;
+   newcomment._id = comments[comments.length-1]._id +1;
+    comments.push(newcomment); 
+    return response.send(comments);
+
+  });
 
 
 //req->request, res->response
