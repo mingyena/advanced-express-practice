@@ -48,6 +48,30 @@ app.post("/comments",function(request,response){
     return response.send(comments);
 
   });
+  app.post("/vehicles",function(request,response){
+    let newvehicle = {};
+    newvehicle = request.body;
+    newvehicle._id = vehicles[vehicles.length-1]._id +1;
+    vehicles.push(newvehicle); 
+     return response.send(vehicles);
+ 
+   });
+   app.post("/products",function(request,response){
+    let newproduct = {};
+    newproduct = request.body;
+    newproduct._id = products[products.length-1]._id +1;
+     products.push(newproduct); 
+     return response.send(newproduct);
+ 
+   });
+   app.post("/contacts",function(request,response){
+    let newcontact = {};
+    newcontact = request.body;
+    newcontact._id = contacts[contacts.length-1]._id +1;
+     comments.push(newcontact); 
+     return response.send(contacts);
+ 
+   });
 
 
 //req->request, res->response
