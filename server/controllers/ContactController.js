@@ -1,31 +1,34 @@
-let contacts = require("../contacts");
-//const ContactModel = require("../models/ContactModel");
+//let contacts = require("../contacts");
+const ContactModel = require("../models/ContactModel");
 
 module.exports.list =  function list(request, response) {
-    response.json(contacts);
+    ContactModel.find({}).exec()
+    .then(contacts => {
+        return response.json(contacts);
+    });
+    
 
    }
-   module.exports.show =  function show(request, response) {
-   
-    return response.send(contacts[request.params.id-1]);
+module.exports.show =  function show(request, response) {
+
+    ContactModel.findById(request.params.id).exec()
+    .then(contacts => {
+        return response.json(contacts);
+    });
 }
 
-let contactID = 1;
+//already had 5 in the DB
+let contactID = 6;
 
-   module.exports.create =  function create(request, response) {
-    let newcontact = {};
-    newcontact = request.body;
+module.exports.create =  function create(request, response) {
+    let newcontact = new ContactModel(request.body);
     newcontact._id = contactID;
     contactID++;
-     comments.push(newcontact); 
-     return response.send(contacts);
-   }
-   module.exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
-   }
-   module.exports.remove =  function remove(request, response) {
-    return response.json({});
-   }
+    newcontact.save()
+    .then(newcontact => {
+      return response.json(newcontact);
+    });
+}
 
    
    
