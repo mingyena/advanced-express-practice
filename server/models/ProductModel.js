@@ -1,19 +1,15 @@
 let mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-
  name: {
    required: true,
    type: String
  },
- occupation: {
+ description: {
    required: true,
-   type: String
- },
- avatar: {
    type: String
  },
 });
 
-module.exports =  mongoose.model("Contact", schema);
+module.exports =  mongoose.model("Product", schema);
 

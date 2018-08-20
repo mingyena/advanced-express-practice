@@ -10,9 +10,17 @@
 
 let express = require("express");
 let ContactRoutes  = require("./routes/ContactRoutes");
+let CommentRoutes  = require("./routes/CommentRoutes");
+let VehicleRoutes  = require("./routes/VehicleRoutes");
+let ProductRoutes  = require("./routes/ProductRoutes");
+
 
 const app = express();
 app.use(ContactRoutes);
+app.use(CommentRoutes);
+app.use(VehicleRoutes);
+app.use(ProductRoutes);
+
 
 
 const port = process.env.PORT || 3001;
@@ -25,7 +33,6 @@ console.log(`Listening on port:${port}`);
 let mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://rliu:rliu123@ds125932.mlab.com:25932/advanced_express_practice");
-const ContactModel = require("./models/ContactModel");
 
 
 

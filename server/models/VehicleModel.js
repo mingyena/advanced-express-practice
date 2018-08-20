@@ -1,19 +1,18 @@
 let mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-
- name: {
+ year: {
+   required: true,
+   type: Number
+ },
+ make: {
    required: true,
    type: String
  },
- occupation: {
-   required: true,
-   type: String
- },
- avatar: {
+ model: {
    type: String
  },
 });
 
-module.exports =  mongoose.model("Contact", schema);
+module.exports =  mongoose.model("Vehicle", schema);
 
