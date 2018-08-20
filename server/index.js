@@ -9,6 +9,9 @@
 // let ContactRoutes = require("./routes/ContactRoutes");
 
 let express = require("express");
+let bodyParser = require("body-parser");
+
+
 let ContactRoutes  = require("./routes/ContactRoutes");
 let CommentRoutes  = require("./routes/CommentRoutes");
 let VehicleRoutes  = require("./routes/VehicleRoutes");
@@ -16,6 +19,7 @@ let ProductRoutes  = require("./routes/ProductRoutes");
 
 
 const app = express();
+app.use(bodyParser.json());
 app.use(ContactRoutes);
 app.use(CommentRoutes);
 app.use(VehicleRoutes);
