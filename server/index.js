@@ -24,7 +24,7 @@ console.log(`Listening on port:${port}`);
 //mongoose
 let mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://rliu1:Ming1988!@ds119652.mlab.com:19652/expresspractice");
+mongoose.connect("mongodb://rliu:rliu123@ds125932.mlab.com:25932/advanced_express_practice");
 const ContactModel = require("./models/ContactModel");
 
 
